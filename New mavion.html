@@ -1,0 +1,348 @@
+<!DOCTYPE html><html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Mavion – Future, Faster.</title>
+  <meta name="description" content="Mavion – A dazzling, modern landing page with a dedicated background space you can swap easily." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=General+Sans:wght@200;400;600;700&family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0b0f17;
+      --ink: #e8eefc;
+      --muted: #9cb0d1;
+      --brand: #6be7ff;
+      --brand-2: #9b6bff;
+      --card: 16 18 30;
+      --glass: rgba(255,255,255,.08);
+      --radius: 22px;
+      --shadow: 0 10px 30px rgba(0,0,0,.35);
+      /* >>> Swap your hero background image below (or leave empty for solid color) <<< */
+      --hero-bg: url(''); /* e.g., url("/images/your-photo.jpg") */
+    }* { box-sizing: border-box; }
+html, body { height: 100%; }
+body {
+  margin: 0;
+  font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, 'Helvetica Neue', Arial, 'Noto Sans', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+  color: var(--ink);
+  background: radial-gradient(1200px 600px at 80% -10%, rgba(155,107,255,.25), transparent 60%),
+              radial-gradient(1000px 500px at -10% 10%, rgba(107,231,255,.22), transparent 55%),
+              var(--bg);
+  overflow-x: hidden;
+}
+
+a { color: inherit; text-decoration: none; }
+.container { width: min(1100px, 92%); margin: 0 auto; }
+
+/* NAVBAR */
+nav {
+  position: fixed; inset-inline: 0; top: 0; z-index: 50;
+  backdrop-filter: saturate(130%) blur(10px);
+  background: linear-gradient(to bottom, rgba(10,12,20,.85), rgba(10,12,20,.55));
+  border-bottom: 1px solid rgba(255,255,255,.06);
+}
+.nav-wrap { display: flex; align-items: center; justify-content: space-between; padding: 14px 0; }
+.brand { display: inline-flex; align-items: center; gap: 10px; font-weight: 800; letter-spacing: .5px; }
+.brand .logo { width: 34px; height: 34px; border-radius: 12px; background: conic-gradient(from 180deg, var(--brand), var(--brand-2), var(--brand)); box-shadow: 0 0 25px rgba(107,231,255,.35), 0 0 45px rgba(155,107,255,.25) inset; }
+.nav-links { display: flex; gap: 24px; align-items: center; }
+.nav-links a { color: var(--muted); font-weight: 600; }
+.nav-cta { padding: 10px 16px; border-radius: 999px; font-weight: 700; background: linear-gradient(135deg, var(--brand), var(--brand-2)); color: #0b0f17; box-shadow: 0 10px 25px rgba(107,231,255,.18), inset 0 -2px 10px rgba(0,0,0,.25); }
+.menu { display: none; }
+
+/* HERO */
+.hero {
+  position: relative; min-height: 92vh; display: grid; place-items: center; padding: 120px 0 80px; isolation: isolate;
+}
+/* Background layer — leave empty or set --hero-bg above */
+.hero::before {
+  content: ""; position: absolute; inset: 0; z-index: -2;
+  background: var(--bg);
+  background-image: var(--hero-bg);
+  background-size: cover; background-position: center; background-repeat: no-repeat;
+  opacity: .28; /* tweak this if your image is too strong */
+  filter: saturate(110%) contrast(105%);
+}
+/* Animated aura */
+.hero::after {
+  content: ""; position: absolute; inset: -20vh -10vw; z-index: -1;
+  background: radial-gradient(650px 320px at 65% 25%, rgba(107,231,255,.20), transparent 60%),
+              radial-gradient(600px 300px at 35% 70%, rgba(155,107,255,.20), transparent 65%);
+  filter: blur(40px);
+  animation: float 12s ease-in-out infinite alternate;
+}
+@keyframes float { from { transform: translateY(0px); } to { transform: translateY(-16px); } }
+
+.hero-grid { display: grid; grid-template-columns: 1.2fr .8fr; gap: 36px; align-items: center; }
+.eyebrow { display: inline-flex; align-items: center; gap: 8px; padding: 6px 10px; border-radius: 999px; background: rgba(255,255,255,.06); color: var(--muted); font-weight: 700; font-size: 12px; letter-spacing: .6px; text-transform: uppercase; }
+.title { font-family: 'General Sans', 'Inter', system-ui, sans-serif; font-weight: 800; font-size: clamp(2rem, 4vw + .8rem, 4rem); line-height: 1.05; margin: 14px 0 14px; letter-spacing: -.02em; }
+.lead { color: #cbd5f6; font-size: clamp(1rem, 1.2vw + .8rem, 1.2rem); opacity: .95; }
+
+.cta-row { display: flex; gap: 16px; align-items: center; margin-top: 28px; flex-wrap: wrap; }
+.btn {
+  padding: 14px 20px; border-radius: 16px; font-weight: 800; letter-spacing: .3px; border: 1px solid rgba(255,255,255,.12);
+  background: linear-gradient(135deg, rgba(255,255,255,.12), rgba(255,255,255,.06)); color: var(--ink);
+  box-shadow: var(--shadow);
+}
+.btn.glow { background: linear-gradient(135deg, var(--brand), var(--brand-2)); color: #0b0f17; border: none; box-shadow: 0 12px 35px rgba(107,231,255,.25), 0 6px 18px rgba(155,107,255,.25); }
+
+.hero-card {
+  backdrop-filter: blur(12px) saturate(130%);
+  background: linear-gradient(180deg, rgba(255,255,255,.10), rgba(255,255,255,.06));
+  border: 1px solid rgba(255,255,255,.14);
+  border-radius: var(--radius);
+  padding: 22px;
+  box-shadow: var(--shadow);
+}
+.metric { display: grid; grid-template-columns: 56px 1fr; gap: 12px; align-items: center; padding: 12px; border-radius: 16px; background: rgba(255,255,255,.06); margin-bottom: 12px; }
+.metric .icon { width: 56px; height: 56px; border-radius: 14px; background: linear-gradient(135deg, rgba(107,231,255,.25), rgba(155,107,255,.25)); display: grid; place-items: center; font-weight: 900; font-size: 18px; color: #09101a; }
+.metric b { font-size: 18px; }
+.subtext { color: var(--muted); font-size: 14px; }
+
+/* FEATURES */
+.section { padding: 80px 0; }
+.section h2 { font-family: 'General Sans', 'Inter', sans-serif; font-size: clamp(1.6rem, 2.2vw + .8rem, 2.8rem); letter-spacing: -.02em; margin: 0 0 14px; }
+.section p.lead { max-width: 760px; }
+.grid3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 26px; }
+.card {
+  border-radius: var(--radius);
+  background: rgba(255,255,255,.06);
+  border: 1px solid rgba(255,255,255,.12);
+  padding: 22px;
+  box-shadow: var(--shadow);
+  transition: transform .35s ease, box-shadow .35s ease;
+}
+.card:hover { transform: translateY(-6px); box-shadow: 0 22px 50px rgba(0,0,0,.4); }
+.card h3 { margin: 0 0 8px; }
+.card p { color: var(--muted); }
+
+/* SHOWCASE */
+.showcase { position: relative; padding: 90px 0; }
+.device {
+  width: min(100%, 980px);
+  margin: 32px auto 0;
+  border-radius: 28px;
+  background: linear-gradient(180deg, rgba(255,255,255,.10), rgba(255,255,255,.05));
+  border: 1px solid rgba(255,255,255,.14);
+  aspect-ratio: 16/9;
+  box-shadow: var(--shadow);
+  position: relative; overflow: hidden;
+}
+.device .placeholder {
+  position: absolute; inset: 0; display: grid; place-items: center; color: var(--muted);
+  font-weight: 700; letter-spacing: .6px; text-transform: uppercase;
+}
+
+/* PRICING */
+.pricing { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 26px; }
+.price-card { position: relative; padding: 26px; border-radius: var(--radius); background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.12); box-shadow: var(--shadow); }
+.price-card.popular { background: linear-gradient(180deg, rgba(255,255,255,.12), rgba(255,255,255,.06)); outline: 2px solid rgba(107,231,255,.35); }
+.price { font-size: 38px; font-weight: 900; letter-spacing: -1px; }
+.features { list-style: none; padding: 0; margin: 14px 0 0; color: var(--muted); }
+.features li { padding: 8px 0; border-bottom: 1px dashed rgba(255,255,255,.12); }
+
+/* CTA STRIP */
+.strip { margin: 80px 0; padding: 26px; border-radius: 28px; background: linear-gradient(90deg, rgba(107,231,255,.15), rgba(155,107,255,.15)); display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; }
+
+/* FOOTER */
+footer { border-top: 1px solid rgba(255,255,255,.08); padding: 30px 0 60px; color: var(--muted); }
+
+/* RESPONSIVE */
+@media (max-width: 980px) {
+  .hero-grid { grid-template-columns: 1fr; }
+  .grid3, .pricing { grid-template-columns: 1fr; }
+  .nav-links { display: none; }
+  .menu { display: inline-flex; align-items: center; gap: 8px; padding: 10px 12px; border-radius: 12px; background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.12); font-weight: 800; color: var(--ink); }
+  .mobile { display: none; position: absolute; top: 62px; right: 4%; left: 4%; background: rgba(16,18,30,.95); border: 1px solid rgba(255,255,255,.12); border-radius: 18px; padding: 14px; }
+  .mobile a { display: block; padding: 12px; border-radius: 12px; color: var(--muted); }
+  .mobile a:hover { background: rgba(255,255,255,.06); color: var(--ink); }
+}
+
+  </style>
+</head>
+<body>
+  <!-- NAVBAR -->
+  <nav aria-label="Primary">
+    <div class="container nav-wrap">
+      <div class="brand">
+        <div class="logo" aria-hidden="true"></div>
+        <span>Mavion</span>
+      </div>
+      <div class="nav-links">
+        <a href="#features">Features</a>
+        <a href="#showcase">Showcase</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#contact">Contact</a>
+        <a class="nav-cta" href="#get-started">Get Started</a>
+      </div>
+      <button class="menu" id="menuBtn" aria-expanded="false" aria-controls="mobileMenu">Menu ▾</button>
+      <div class="mobile" id="mobileMenu" role="dialog" aria-label="Mobile Menu">
+        <a href="#features" onclick="toggleMenu(false)">Features</a>
+        <a href="#showcase" onclick="toggleMenu(false)">Showcase</a>
+        <a href="#pricing" onclick="toggleMenu(false)">Pricing</a>
+        <a href="#contact" onclick="toggleMenu(false)">Contact</a>
+        <a class="nav-cta" href="#get-started" onclick="toggleMenu(false)">Get Started</a>
+      </div>
+    </div>
+  </nav>  <!-- HERO with dedicated background SPACE (swap --hero-bg in :root) -->  <header class="hero" id="home">
+    <div class="container hero-grid">
+      <div>
+        <span class="eyebrow">⚡ The Mavion Era Begins</span>
+        <h1 class="title">Build, launch, and scale ideas in warp speed.</h1>
+        <p class="lead">Mavion is your all‑in‑one platform for creators and innovators—fast onboarding, crystal‑clear analytics, and drop‑dead gorgeous UX built for 2025.</p>
+        <div class="cta-row">
+          <a class="btn glow" href="#get-started">Start Free</a>
+          <a class="btn" href="#showcase">See it in action</a>
+        </div>
+      </div>
+      <aside class="hero-card" aria-label="Highlights">
+        <div class="metric">
+          <div class="icon">🚀</div>
+          <div>
+            <b>Launch 5× faster</b>
+            <div class="subtext">Prebuilt templates & automations</div>
+          </div>
+        </div>
+        <div class="metric">
+          <div class="icon">📈</div>
+          <div>
+            <b>Real‑time analytics</b>
+            <div class="subtext">Insights that actually drive action</div>
+          </div>
+        </div>
+        <div class="metric">
+          <div class="icon">🛡</div>
+          <div>
+            <b>Bank‑grade security</b>
+            <div class="subtext">Your data, locked and loaded</div>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </header>  <!-- FEATURES -->  <section id="features" class="section">
+    <div class="container">
+      <h2>Everything you need. Nothing you don’t.</h2>
+      <p class="lead">From idea to impact, Mavion gives you elite‑level tools with a workflow that feels like magic. Plug in your content, flip the switch, and ship.</p>
+      <div class="grid3">
+        <article class="card">
+          <h3>Drag‑drop builder</h3>
+          <p>Make stunning pages in minutes—no code required. Custom blocks, global styles, instant preview.</p>
+        </article>
+        <article class="card">
+          <h3>Automation engine</h3>
+          <p>Trigger emails, webhooks, and tasks based on user actions. If this, then <em>awesome</em>.</p>
+        </article>
+        <article class="card">
+          <h3>Payments & subs</h3>
+          <p>Monetize from day one with built‑in checkout, taxes, and member management.</p>
+        </article>
+      </div>
+    </div>
+  </section>  <!-- SHOWCASE / PLACEHOLDER DEVICE FRAME -->  <section id="showcase" class="showcase section">
+    <div class="container">
+      <h2>Show it off in style</h2>
+      <p class="lead">Drop a product screenshot or promo video inside the frame below. It’s responsive and looks crisp on any device.</p>
+      <div class="device" aria-label="Showcase frame">
+        <div class="placeholder">Place your screenshot/video here</div>
+        <!-- Example: <img src="/shots/mavion-dashboard.png" alt="Mavion dashboard screenshot" style="width:100%;height:100%;object-fit:cover;"> -->
+      </div>
+    </div>
+  </section>  <!-- PRICING -->  <section id="pricing" class="section">
+    <div class="container">
+      <h2>Simple pricing that scales with you</h2>
+      <p class="lead">Start free. Upgrade when you’re ready to go lightspeed.</p>
+      <div class="pricing">
+        <div class="price-card">
+          <div class="price">Free</div>
+          <div class="subtext">For exploration</div>
+          <ul class="features">
+            <li>Core builder</li>
+            <li>Community templates</li>
+            <li>Basic analytics</li>
+          </ul>
+          <div class="cta-row" style="margin-top:18px"><a class="btn" href="#get-started">Get Free</a></div>
+        </div>
+        <div class="price-card popular">
+          <div class="price">Pro</div>
+          <div class="subtext">For solo founders</div>
+          <ul class="features">
+            <li>All Free features</li>
+            <li>Automations & webhooks</li>
+            <li>Payments & subscriptions</li>
+          </ul>
+          <div class="cta-row" style="margin-top:18px"><a class="btn glow" href="#get-started">Go Pro</a></div>
+        </div>
+        <div class="price-card">
+          <div class="price">Teams</div>
+          <div class="subtext">For growing orgs</div>
+          <ul class="features">
+            <li>Everything in Pro</li>
+            <li>Advanced roles & SSO</li>
+            <li>Priority support</li>
+          </ul>
+          <div class="cta-row" style="margin-top:18px"><a class="btn" href="#get-started">Start Teams</a></div>
+        </div>
+      </div>
+    </div>
+  </section>  <!-- CTA STRIP -->  <div class="container strip" id="get-started" role="region" aria-label="Call to action">
+    <div>
+      <h3 style="margin: 0 0 4px">Ready to launch Mavion?</h3>
+      <div class="subtext">Plug your assets in, choose a background, and you’re live in minutes.</div>
+    </div>
+    <a class="btn glow" href="#contact">Talk to us</a>
+  </div>  <!-- CONTACT / FOOTER -->  <footer id="08160262063">
+    <div class="container">
+      <div style="display:grid;grid-template-columns:2fr 1fr 1fr;gap:20px;align-items:start">
+        <div>
+          <div class="brand"><div class="logo" aria-hidden="true"></div><span>Mavion</span></div>
+          <p class="subtext" style="margin-top:10px">We build tools that help you build the future.</p>
+        </div>
+        <div>
+          <b>Company</b>
+          <ul class="features">
+            <li><a href="#features">Features</a></li>
+            <li><a href="#pricing">Pricing</a></li>
+            <li><a href="#showcase">Showcase</a></li>
+          </ul>
+        </div>
+        <div>
+          <b>Contact</b>
+          <ul class="features">
+            <li><a href="mailto:hello@mavion.app">hello@mavion.app</a></li>
+            <li><a href="#">Twitter</a></li>
+            <li><a href="#">Instagram</a></li>
+          </ul>
+        </div>
+      </div>
+      <p style="margin-top:30px">© <span id="y"></span> Mavion. All rights reserved.</p>
+    </div>
+  </footer>  <script>
+    // Mobile menu toggle
+    const menuBtn = document.getElementById('menuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    function toggleMenu(force) {
+      const open = typeof force === 'boolean' ? force : mobileMenu.style.display !== 'block';
+      mobileMenu.style.display = open ? 'block' : 'none';
+      menuBtn.setAttribute('aria-expanded', String(open));
+    }
+    menuBtn?.addEventListener('click', () => toggleMenu());
+
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        const id = a.getAttribute('href');
+        if (id && id.length > 1) {
+          const el = document.querySelector(id);
+          if (el) {
+            e.preventDefault();
+            window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 70, behavior: 'smooth' });
+          }
+        }
+      });
+    });
+
+    // Dynamic year
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
+  </body>
+</html>
